@@ -1,4 +1,4 @@
-package com.example.desenvolvimento.challengermarvel;
+package com.example.desenvolvimento.challengemarvel;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void btnOpenActivity (View view){
+    public void btnOpenCharacterActivity (View view){
         Intent intent = new Intent(this,CharacterActivity.class);
         startActivity(intent);
     }

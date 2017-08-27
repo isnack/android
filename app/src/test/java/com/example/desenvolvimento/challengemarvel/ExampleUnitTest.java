@@ -1,4 +1,4 @@
-package com.example.desenvolvimento.challengermarvel;
+package com.example.desenvolvimento.challengemarvel;
 
 import org.junit.Test;
 

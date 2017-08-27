@@ -1,12 +1,14 @@
-package com.example.desenvolvimento.challengermarvel;
+package com.example.desenvolvimento.challengemarvel;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,7 +21,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CharacterActivity extends AppCompatActivity {
 
@@ -27,9 +28,23 @@ public class CharacterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character);
+        ListView listView = (ListView) findViewById(R.id.listViewCharacter);
 
         new DownloadDados().execute();
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView parent, View view, int position, long id) {
+                Character character = (Character) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getBaseContext(),CharacterDetailsActivity.class);
+                intent.putExtra("CharacterObject",  character);
+                startActivity(intent);
+            }
+        });
+
     }
+
+
     class DownloadDados extends AsyncTask<Void, Void, String> {
         ProgressDialog dialog;
         @Override
@@ -76,27 +91,26 @@ public class CharacterActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            dialog = ProgressDialog.show(CharacterActivity.this, "Aguarde",
-                    "Obterndo dados");
+            dialog = ProgressDialog.show(CharacterActivity.this, "Wait",
+                    "Getting data");
         }
         @Override
         protected void onPostExecute(String dados) {
            ListView listView = (ListView) findViewById(R.id.listViewCharacter);
 
             JSONObject dadosJson = null;
-            JSONObject dadosJson2 = null;
             ArrayList<Character> listCharacters =null;
 
            try {
                dadosJson =  stringToJson(dados);
-               dadosJson2=dadosJson;
-            //   listCharacters = getCharacter(dadosJson);
+               listCharacters = getCharacter(dadosJson);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-           // ListAdapterCharacter adapterCharacter =new ListAdapterCharacter(CharacterActivity.this,listCharacters);
-           // listView.setAdapter(adapterCharacter);
+           ListAdapterCharacter adapterCharacter =new ListAdapterCharacter(CharacterActivity.this,listCharacters);
+           listView.setAdapter(adapterCharacter);
             dialog.dismiss();
 
         }
@@ -108,17 +122,23 @@ public class CharacterActivity extends AppCompatActivity {
             return json;
 
         }
-        private ArrayList<Character> getCharacter (JSONArray json) throws JSONException {
+        private ArrayList<Character> getCharacter (JSONObject json) throws JSONException {
             ArrayList<Character> characters = new ArrayList<Character>();
             JSONObject characterJson;
-            for (int i = 0; i < json.length(); i++) {
-                characterJson = new JSONObject(json.getString(i));
+            JSONObject jsonObjectData = json.optJSONObject("data");
+            JSONArray jsonResult = jsonObjectData.getJSONArray("results");
+            for (int i = 0; i < jsonResult.length(); i++) {
+                characterJson = new JSONObject(jsonResult.getString(i));
                 Log.i("Character ENCONTRADO: ",
                         "name=" + characterJson.getString("name"));
 
                 Character objCharacter = new Character();
                 objCharacter.setName(characterJson.getString("name"));
                 objCharacter.setDescription(characterJson.getString("description"));
+                objCharacter.setModified(characterJson.getString("modified"));
+                objCharacter.setImageUrl(characterJson.optJSONObject("thumbnail").getString("path"));
+                objCharacter.setAmountComics(characterJson.optJSONObject("comics").getString("returned"));
+                objCharacter.setAmountEvents(characterJson.optJSONObject("events").getString("returned"));
                 characters.add(objCharacter);
             }
             return characters;
