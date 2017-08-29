@@ -1,4 +1,4 @@
-package com.example.desenvolvimento.challengemarvel;
+package com.example.desenvolvimento.challengemarvel.activities;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,11 +9,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.desenvolvimento.challengemarvel.R;
+import com.example.desenvolvimento.challengemarvel.models.Character;
+
 import java.util.ArrayList;
 
 /**
  * Created by Desenvolvimento on 26/08/2017.
  */
+
+// Classe responsável por realizar o Adapter da lista de personagens (Characters) e exibir na tela
 
 public class ListAdapterCharacter extends ArrayAdapter<Character> {
     private Context context;
@@ -27,9 +32,9 @@ public class ListAdapterCharacter extends ArrayAdapter<Character> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
         Character characterPosition = this.lista.get(position);
         convertView = LayoutInflater.from(this.context).inflate(R.layout.item_list_view,null);
-
         TextView txtViewName = (TextView) convertView.findViewById(R.id.txtViewName);
         txtViewName.setText(characterPosition.getName());
 

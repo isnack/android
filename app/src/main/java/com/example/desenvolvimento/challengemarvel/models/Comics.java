@@ -1,4 +1,4 @@
-package com.example.desenvolvimento.challengemarvel;
+package com.example.desenvolvimento.challengemarvel.models;
 
 import java.io.Serializable;
 
@@ -6,13 +6,20 @@ import java.io.Serializable;
  * Created by Desenvolvimento on 27/08/2017.
  */
 
-public class Events implements Serializable {
-
+public class Comics implements Serializable {
     private String title;
     private String description;
     private String modified;
-    private String startDate;
-    private String endDate;
+    private String isbn;
+    private String pages;
+
+    public String getPages() {
+        return pages;
+    }
+
+    public void setPages(String pages) {
+        this.pages = pages;
+    }
 
     public String getTitle() {
         return title;
@@ -38,19 +45,11 @@ public class Events implements Serializable {
         this.modified = modified;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 }

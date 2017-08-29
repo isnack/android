@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.desenvolvimento.challengemarvel.activities.CharacterActivity">
+    tools:context="com.example.desenvolvimento.challengemarvel.activities.EventActivity">
 
     <ListView
-        android:id="@+id/listViewCharacter"
+        android:id="@+id/listViewEvents"
         android:layout_width="581dp"
         android:layout_height="568dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="-39dp" />
+
 </android.support.constraint.ConstraintLayout>

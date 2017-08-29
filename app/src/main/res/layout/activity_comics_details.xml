@@ -6,7 +6,7 @@
 
 
     <TextView
-        android:id="@+id/txtDetailsCharName"
+        android:id="@+id/txtDetailsComicTitle"
         android:layout_width="300dp"
         android:layout_height="43dp"
         android:text="TextView"
@@ -21,33 +21,35 @@
         android:text="Description:" />
 
     <TextView
-        android:id="@+id/txtDetailsCharDescription"
+        android:id="@+id/txtDetailsComicDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/lblAmountComics"
+        android:id="@+id/lblIsbnComic"
         android:layout_width="150dp"
         android:layout_height="37dp"
         android:textStyle="bold"
-        android:text="Amount of comics" />
+        android:text="Isbn" />
 
     <TextView
-        android:id="@+id/txtAmountComics"
+        android:id="@+id/txtIsbnNumber"
         android:layout_width="111dp"
         android:layout_height="37dp" />
 
     <TextView
-        android:id="@+id/lblAmountEvents"
+        android:id="@+id/lblPagesComic"
         android:layout_width="150dp"
         android:layout_height="37dp"
         android:textStyle="bold"
-        android:text="Amount of events" />
+        android:text="Pages" />
 
     <TextView
-        android:id="@+id/txtAmountEvents"
+        android:id="@+id/txtPagesComic"
         android:layout_width="111dp"
         android:layout_height="37dp" />
+
+
 
 </LinearLayout>

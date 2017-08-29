@@ -1,8 +1,13 @@
-package com.example.desenvolvimento.challengemarvel;
+package com.example.desenvolvimento.challengemarvel.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.desenvolvimento.challengemarvel.R;
+import com.example.desenvolvimento.challengemarvel.models.Character;
+
+// Classe responsável por exibir os detalhes de um Personagem (Character)
 
 public class CharacterDetailsActivity extends AppCompatActivity {
 
@@ -12,16 +17,12 @@ public class CharacterDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_character_details);
 
         Character character=(Character)getIntent().getSerializableExtra("CharacterObject");
-
         TextView txtDetailsCharName = (TextView) findViewById(R.id.txtDetailsCharName);
         txtDetailsCharName.setText(character.getName());
-
         TextView txtDetailsCharDescription = (TextView) findViewById(R.id.txtDetailsCharDescription);
         txtDetailsCharDescription.setText(character.getDescription());
-
         TextView txtAmountComics = (TextView) findViewById(R.id.txtAmountComics);
         txtAmountComics.setText(character.getAmountComics());
-        
         TextView txtAmountEvents = (TextView) findViewById(R.id.txtAmountEvents);
         txtAmountEvents.setText(character.getAmountEvents());
     }

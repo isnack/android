@@ -1,4 +1,4 @@
-package com.example.desenvolvimento.challengemarvel;
+package com.example.desenvolvimento.challengemarvel.models;
 
 import java.io.Serializable;
 
