@@ -7,12 +7,21 @@ import java.io.Serializable;
  */
 
 public class Character implements Serializable {
+    private int id;
     private String name;
     private String description;
     private String modified;
     private String amountComics;
     private String amountEvents;
     private String imageUrl;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getAmountComics() {
         return amountComics;

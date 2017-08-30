@@ -1,5 +1,8 @@
 package com.example.desenvolvimento.challengemarvel.services;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -52,4 +55,6 @@ public class ApiService extends AsyncTask<Void,Void,String> {
 
         return stringData;
     }
+
+
 }
