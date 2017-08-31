@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.desenvolvimento.challengemarvel.R;
-import com.example.desenvolvimento.challengemarvel.activities.CharacterActivity;
+
 
 public class MainActivity extends AppCompatActivity {
 

@@ -8,12 +8,20 @@ import java.io.Serializable;
 
 
 public class Events implements Serializable {
-
+    private int id;
     private String title;
     private String description;
     private String modified;
     private String startDate;
     private String endDate;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

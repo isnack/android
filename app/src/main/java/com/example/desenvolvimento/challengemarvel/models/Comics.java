@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 
 public class Comics implements Serializable {
+    private int id;
     private String title;
     private String description;
     private String modified;
@@ -15,6 +16,14 @@ public class Comics implements Serializable {
 
     public String getPages() {
         return pages;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setPages(String pages) {

@@ -1,6 +1,9 @@
 package com.example.desenvolvimento.challengemarvel.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,10 +26,11 @@ public class ComicsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_comics);
 
         ListView listView = (ListView) findViewById(R.id.listViewComics);
+        boolean isOnline = isOnline();
 
         ComicService comicService = new ComicService();
         try {
-            ArrayList<Comics> comics = comicService.listAllComics();
+            ArrayList<Comics> comics = comicService.listAllComics(ComicsActivity.this,isOnline);
             ListAdapterComic adapterComic = new ListAdapterComic(ComicsActivity.this, comics);
             listView.setAdapter(adapterComic);
 
@@ -43,5 +47,15 @@ public class ComicsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null) { // connected to the internet
+            return true;
+        } else {
+            // not connected to the internet
+            return false;
+        }
     }
 }
