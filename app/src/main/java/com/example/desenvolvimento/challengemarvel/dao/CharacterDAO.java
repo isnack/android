@@ -1,10 +1,9 @@
-package com.example.desenvolvimento.challengemarvel;
+package com.example.desenvolvimento.challengemarvel.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.ContactsContract;
 
 import com.example.desenvolvimento.challengemarvel.models.Character;
 
@@ -32,7 +31,7 @@ public class CharacterDAO {
         values.put("amountEvents", character.getAmountEvents());
         values.put("imageUrl", character.getImageUrl());
 
-        db.insert("insert into "+TABLE_NAME, null, values);
+        long insertedId= db.insert(TABLE_NAME, null, values);
     }
 
     public ArrayList<Character> listCharacters(){
@@ -55,6 +54,11 @@ public class CharacterDAO {
             }
             cursor.close();
             return characters;
+    }
+
+    public void deleteDataCharacter(){
+        db.execSQL("delete from character");
+
     }
 
 }

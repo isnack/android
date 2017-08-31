@@ -28,10 +28,10 @@ public class CharacterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character);
         ListView listView = (ListView) findViewById(R.id.listViewCharacter);
-
+        boolean isOnline = isOnline();
         CharacterService characterService = new CharacterService();
         try {
-                ArrayList<Character> characters = characterService.listAllCharacters(CharacterActivity.this, isOnline());
+                ArrayList<Character> characters = characterService.listAllCharacters(CharacterActivity.this,isOnline );
                 ListAdapterCharacter adapterCharacter = new ListAdapterCharacter(CharacterActivity.this, characters);
                 listView.setAdapter(adapterCharacter);
 
@@ -52,10 +52,11 @@ public class CharacterActivity extends AppCompatActivity {
     }
     public boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null) { // connected to the internet
             return true;
         } else {
+            // not connected to the internet
             return false;
         }
     }
