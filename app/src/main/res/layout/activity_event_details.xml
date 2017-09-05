@@ -1,56 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
 
-
-    <TextView
-        android:id="@+id/txtEventDetailsTitle"
-        android:layout_width="match_parent"
-        android:layout_height="43dp"
-        android:text="TextView"
-        android:textSize="37dp"
-        android:layout_weight="0.03" />
-
-    <TextView
-        android:id="@+id/lblDetailsDescription"
-        android:layout_width="111dp"
-        android:layout_height="37dp"
-        android:textStyle="bold"
-        android:text="Description:" />
-
-    <TextView
-        android:id="@+id/txtEventDetailsDescription"
+    <ImageView
+        android:id="@+id/imageViewCharacter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_weight="1"
+        app:srcCompat="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/lblEventStartDate"
-        android:layout_width="150dp"
-        android:layout_height="37dp"
-        android:textStyle="bold"
-        android:text="Start Date" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="62dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtEventStartDate"
-        android:layout_width="111dp"
-        android:layout_height="37dp" />
+        <TextView
+            android:id="@+id/txtEventDetailsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="27dp" />
 
-    <TextView
-        android:id="@+id/lblEventEndDate"
-        android:layout_width="150dp"
-        android:layout_height="37dp"
-        android:textStyle="bold"
-        android:text="End Date" />
+        <TextView
+            android:id="@+id/lblDetailsDescription"
+            android:layout_width="111dp"
+            android:layout_height="37dp"
+            android:textStyle="bold"
+            android:text="Description:" />
 
-    <TextView
-        android:id="@+id/txtEventEndDate"
-        android:layout_width="111dp"
-        android:layout_height="37dp" />
+        <TextView
+            android:id="@+id/txtEventDetailsDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
 
+        <TextView
+            android:id="@+id/lblEventStartDate"
+            android:layout_width="150dp"
+            android:layout_height="37dp"
+            android:textStyle="bold"
+            android:text="Start Date" />
 
+        <TextView
+            android:id="@+id/txtEventStartDate"
+            android:layout_width="111dp"
+            android:layout_height="37dp" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/lblEventEndDate"
+            android:layout_width="150dp"
+            android:layout_height="37dp"
+            android:textStyle="bold"
+            android:text="End Date" />
+
+        <TextView
+            android:id="@+id/txtEventEndDate"
+            android:layout_width="111dp"
+            android:layout_height="37dp" />
+    </LinearLayout>
+</RelativeLayout>

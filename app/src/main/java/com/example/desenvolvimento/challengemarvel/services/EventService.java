@@ -55,14 +55,14 @@ public class EventService {
             objEvent.setDescription(eventJson.getString("description"));
         }
         if (eventJson.getString("start") == "null" || eventJson.getString("start").isEmpty()) {
-            objEvent.setDescription("Start date  not found");
+            objEvent.setStartDate("Start date  not found");
         } else {
-            objEvent.setDescription(eventJson.getString("end"));
+            objEvent.setStartDate(eventJson.getString("start"));
         }
         if (eventJson.getString("end") == "null" || eventJson.getString("end").isEmpty()) {
-            objEvent.setDescription("End date not found");
+            objEvent.setEndDate("End date not found");
         } else {
-            objEvent.setDescription(eventJson.getString("end"));
+            objEvent.setEndDate(eventJson.getString("end"));
         }
         objEvent.setModified(eventJson.getString("modified"));
         eventDAO.addEvent(objEvent);

@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.desenvolvimento.challengemarvel.R;
 import com.example.desenvolvimento.challengemarvel.models.Character;
+import com.example.desenvolvimento.challengemarvel.services.ImageLoadService;
 
 import java.util.ArrayList;
 
@@ -37,6 +39,9 @@ public class ListAdapterCharacter extends ArrayAdapter<Character> {
         convertView = LayoutInflater.from(this.context).inflate(R.layout.item_list_view,null);
         TextView txtViewName = (TextView) convertView.findViewById(R.id.txtViewName);
         txtViewName.setText(characterPosition.getName());
+        ImageView imageView2 = (ImageView) convertView.findViewById(R.id.imageView2);
+        ImageLoadService imageLoadService = new ImageLoadService(imageView2);
+        imageLoadService.execute(characterPosition.getImageUrl()+"/portrait_small.jpg");
 
         return convertView;
     }

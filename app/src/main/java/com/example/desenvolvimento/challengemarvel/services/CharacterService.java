@@ -61,6 +61,7 @@ public class CharacterService {
         objCharacter.setImageUrl(characterJson.optJSONObject("thumbnail").getString("path"));
         objCharacter.setAmountComics(characterJson.optJSONObject("comics").getString("returned"));
         objCharacter.setAmountEvents(characterJson.optJSONObject("events").getString("returned"));
+        objCharacter.setImageUrl(characterJson.optJSONObject("thumbnail").getString("path"));
         characterDAO.addCharacter((objCharacter));
 
         return objCharacter;
